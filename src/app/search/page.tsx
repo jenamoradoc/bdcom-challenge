@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { DummyJsonProductRepository } from '../../infrastructure/repositories/DummyJsonProductRepository';
 import { SearchProductsUseCase } from '../../application/use-cases/SearchProductsUseCase';
 import { GetCategoriesUseCase } from '../../application/use-cases/GetCategoriesUseCase';
@@ -9,6 +10,12 @@ import { Category } from '../../domain/entities/Category';
 
 interface SearchPageProps {
   searchParams: Promise<{ s?: string }>;
+}
+
+export async function generateMetadata({ searchParams }: SearchPageProps): Promise<Metadata> {
+  const { s } = await searchParams;
+  if (!s) return { title: 'Productos — Bidcom' };
+  return { title: `"${s}" — Bidcom` };
 }
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
