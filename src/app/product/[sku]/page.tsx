@@ -5,6 +5,7 @@ import { Header } from '../../../presentation/components/layout/Header/Header';
 import { ProductDetail } from '../../../presentation/components/product/ProductDetail/ProductDetail';
 import { EmptyState } from '../../../presentation/components/search/EmptyState/EmptyState';
 import { Container } from '../../../presentation/components/layout/Container/Container';
+import { BackButton } from '../../../presentation/components/ui/BackButton/BackButton';
 
 interface ProductPageProps {
   params: Promise<{ sku: string }>;
@@ -38,6 +39,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <Header />
       <main>
         <Container>
+          <BackButton />
           <ProductDetail product={product} />
         </Container>
       </main>
