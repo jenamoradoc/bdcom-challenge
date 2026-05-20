@@ -64,7 +64,7 @@ export class DummyJsonProductRepository implements IProductRepository {
     // so we fetch all IDs+SKUs (lightweight) to find the matching ID,
     // then fetch the full product.
     const indexResponse = await fetch(
-      `${BASE_URL}/products?limit=194&select=id,sku`,
+      `${BASE_URL}/products?limit=0&select=id,sku`,
       { cache: 'no-store' }
     );
 
