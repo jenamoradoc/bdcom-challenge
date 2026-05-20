@@ -1,4 +1,5 @@
 import { getProductRepository } from '../../infrastructure/repositories/productRepositoryFactory';
+import { Typography } from '../../presentation/components/ui/Typography/Typography';
 import { SearchProductsUseCase } from '../../application/use-cases/SearchProductsUseCase';
 import { GetCategoriesUseCase } from '../../application/use-cases/GetCategoriesUseCase';
 import { Header } from '../../presentation/components/layout/Header/Header';
@@ -35,10 +36,10 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         <Container className="py-8">
           {hasResults ? (
             <>
-              <p className="text-sm text-gray-500 mb-4">
+              <Typography variant="caption" className="mb-4 block">
                 {products.length} resultado{products.length !== 1 ? 's' : ''} para{' '}
                 <strong>&ldquo;{query}&rdquo;</strong>
-              </p>
+              </Typography>
               <ProductGrid products={products} />
             </>
           ) : (

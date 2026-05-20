@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Category } from '../../../../domain/entities/Category';
 import { EMPTY_STATE_CATEGORIES_LIMIT } from '../../../../lib/constants';
+import { Typography } from '../../../components/ui/Typography/Typography';
 
 export interface EmptyStateProps {
   categories: Category[];
@@ -27,12 +28,12 @@ function EmptyState({ categories }: EmptyStateProps) {
         />
       </svg>
 
-      <p className="text-lg text-[var(--color-neutral-900)] mb-2">
+      <Typography variant="h3" className="mb-2">
         No se encontró ningún producto.
-      </p>
-      <p className="text-gray-500 mb-6">
+      </Typography>
+      <Typography variant="caption" className="mb-6">
         Te recomendamos buscar estas categorías:
-      </p>
+      </Typography>
 
       <ul className="flex flex-wrap justify-center gap-2">
         {displayCategories.map((category) => (

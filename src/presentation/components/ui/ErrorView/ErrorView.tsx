@@ -1,5 +1,7 @@
 'use client';
 
+import { Typography } from '../Typography/Typography';
+
 interface ErrorViewProps {
   message?: string;
   reset?: () => void;
@@ -23,8 +25,8 @@ function ErrorView({ message = 'Algo salió mal.', reset }: ErrorViewProps) {
           d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"
         />
       </svg>
-      <p className="text-lg font-medium text-[var(--color-neutral-900)]">{message}</p>
-      <p className="text-sm text-gray-500">Por favor intentá de nuevo.</p>
+      <Typography variant="h3">{message}</Typography>
+      <Typography variant="caption">Por favor intentá de nuevo.</Typography>
       {reset && (
         <button
           onClick={reset}

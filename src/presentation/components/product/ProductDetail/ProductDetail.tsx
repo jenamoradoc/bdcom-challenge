@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Product } from '../../../../domain/entities/Product';
 import { formatPrice } from '../../../../lib/utils';
 import { Badge } from '../../ui/Badge/Badge';
+import { Typography } from '../../ui/Typography/Typography';
 
 export interface ProductDetailProps {
   product: Product;
@@ -23,14 +24,12 @@ function ProductDetail({ product }: ProductDetailProps) {
 
       <div className="flex flex-col gap-4">
         {product.brand && (
-          <p className="text-sm text-gray-500 uppercase tracking-wider">
+          <Typography variant="caption" className="uppercase tracking-wider">
             {product.brand}
-          </p>
+          </Typography>
         )}
 
-        <h1 className="text-2xl font-bold text-[var(--color-neutral-900)]">
-          {product.title}
-        </h1>
+        <Typography variant="h1">{product.title}</Typography>
 
         <div className="flex items-center gap-3">
           <span className="text-3xl font-bold text-[var(--color-primary)]">
@@ -46,20 +45,16 @@ function ProductDetail({ product }: ProductDetailProps) {
 
         <div className="flex items-center gap-2">
           <span className="text-yellow-400" aria-hidden="true">★</span>
-          <span className="text-sm text-gray-600">
-            {product.rating.toFixed(1)} / 5
-          </span>
+          <Typography variant="caption">{product.rating.toFixed(1)} / 5</Typography>
           <span className="text-sm text-gray-400">·</span>
-          <span className="text-sm text-gray-600">
-            {product.stock} en stock
-          </span>
+          <Typography variant="caption">{product.stock} en stock</Typography>
         </div>
 
         <Badge label={product.category} variant="neutral" />
 
-        <p className="text-[var(--color-neutral-900)] leading-relaxed">
+        <Typography variant="body" className="leading-relaxed">
           {product.description}
-        </p>
+        </Typography>
 
         <button className="mt-2 w-full md:w-auto px-8 py-3 bg-[var(--color-primary)] text-white font-semibold rounded-[var(--radius-button)] hover:bg-[var(--color-primary-dark)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2">
           Agregar al carrito
