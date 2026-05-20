@@ -1,5 +1,4 @@
-import type { Metadata } from 'next';
-import { DummyJsonProductRepository } from '../../infrastructure/repositories/DummyJsonProductRepository';
+import { getProductRepository } from '../../infrastructure/repositories/productRepositoryFactory';
 import { SearchProductsUseCase } from '../../application/use-cases/SearchProductsUseCase';
 import { GetCategoriesUseCase } from '../../application/use-cases/GetCategoriesUseCase';
 import { Header } from '../../presentation/components/layout/Header/Header';
@@ -12,17 +11,12 @@ interface SearchPageProps {
   searchParams: Promise<{ s?: string }>;
 }
 
-export async function generateMetadata({ searchParams }: SearchPageProps): Promise<Metadata> {
-  const { s } = await searchParams;
-  if (!s) return { title: 'Productos — Bidcom' };
-  return { title: `"${s}" — Bidcom` };
-}
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const { s } = await searchParams;
   const query = s ?? '';
 
-  const repository = new DummyJsonProductRepository();
+  const repository = getProductRepository();
   const searchProducts = new SearchProductsUseCase(repository);
   const products = await searchProducts.execute(query);
 
