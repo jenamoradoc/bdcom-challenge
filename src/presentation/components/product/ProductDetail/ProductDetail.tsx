@@ -61,7 +61,7 @@ function ProductDetail({ product }: ProductDetailProps) {
         <div className="flex items-center gap-3 mt-2">
           <AddToCartButton product={product} />
           <FavoriteButton
-            sku={product.sku}
+            product={product}
             className="h-11 w-11 border border-gray-200 hover:border-red-400 text-gray-400 hover:text-red-500"
           />
         </div>

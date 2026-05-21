@@ -23,7 +23,7 @@ function ProductCard({ product }: ProductCardProps) {
           className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
         />
         <FavoriteButton
-          sku={product.sku}
+          product={product}
           className="absolute top-2 right-2 h-8 w-8 bg-white/80 hover:bg-white text-gray-400 hover:text-red-500"
         />
       </div>

@@ -2,15 +2,16 @@
 
 import { useState, useEffect } from 'react';
 import { useFavoritesStore } from '../../../../store/useFavoritesStore';
+import { Product } from '../../../../domain/entities/Product';
 
 interface FavoriteButtonProps {
-  sku: string;
+  product: Product;
   className?: string;
 }
 
-function FavoriteButton({ sku, className = '' }: FavoriteButtonProps) {
+function FavoriteButton({ product, className = '' }: FavoriteButtonProps) {
   const toggle = useFavoritesStore((s) => s.toggle);
-  const isFavorite = useFavoritesStore((s) => s.isFavorite(sku));
+  const isFavorite = useFavoritesStore((s) => s.isFavorite(product.sku));
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
@@ -18,7 +19,7 @@ function FavoriteButton({ sku, className = '' }: FavoriteButtonProps) {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    toggle(sku);
+    toggle(product);
   };
 
   return (

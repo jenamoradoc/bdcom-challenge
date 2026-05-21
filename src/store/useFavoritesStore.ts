@@ -1,26 +1,27 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { Product } from '../domain/entities/Product';
 
 interface FavoritesStore {
-  skus: string[];
-  toggle: (sku: string) => void;
+  products: Product[];
+  toggle: (product: Product) => void;
   isFavorite: (sku: string) => boolean;
 }
 
 export const useFavoritesStore = create<FavoritesStore>()(
   persist(
     (set, get) => ({
-      skus: [],
+      products: [],
 
-      toggle: (sku) => {
+      toggle: (product) => {
         set((state) => ({
-          skus: state.skus.includes(sku)
-            ? state.skus.filter((s) => s !== sku)
-            : [...state.skus, sku],
+          products: state.products.some((p) => p.sku === product.sku)
+            ? state.products.filter((p) => p.sku !== product.sku)
+            : [...state.products, product],
         }));
       },
 
-      isFavorite: (sku) => get().skus.includes(sku),
+      isFavorite: (sku) => get().products.some((p) => p.sku === sku),
     }),
     { name: 'favorites' }
   )

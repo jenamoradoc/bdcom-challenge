@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Container } from '../Container/Container';
 import { SearchBar } from '../../search/SearchBar/SearchBar';
 import { CartIcon } from '../../ui/CartIcon/CartIcon';
+import { FavoritesIcon } from '../../ui/FavoritesIcon/FavoritesIcon';
 
 export interface HeaderProps {
   initialSearchValue?: string;
@@ -25,6 +26,7 @@ function Header({ initialSearchValue = '' }: HeaderProps) {
             <SearchBar initialValue={initialSearchValue} />
           </div>
 
+          <FavoritesIcon />
           <CartIcon />
         </div>
       </Container>
