@@ -2,7 +2,7 @@
 
 Mini ecommerce construido con Next.js 15, React 19, Clean Architecture y Zustand. Permite buscar productos, agregarlos al carrito, marcarlos como favoritos y simular un flujo de compra completo, consumiendo la API pública de [DummyJSON](https://dummyjson.com).
 
-**Demo en vivo:** [DEPLOY_URL]
+**Demo en vivo:** [[DEPLOY_URL](https://bdcom-challenge.vercel.app/)]
 
 ---
 
