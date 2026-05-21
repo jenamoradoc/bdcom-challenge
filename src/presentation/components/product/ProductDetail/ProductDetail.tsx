@@ -3,6 +3,8 @@ import { Product } from '../../../../domain/entities/Product';
 import { formatPrice } from '../../../../lib/utils';
 import { Badge } from '../../ui/Badge/Badge';
 import { Typography } from '../../ui/Typography/Typography';
+import { FavoriteButton } from '../../ui/FavoriteButton/FavoriteButton';
+import { AddToCartButton } from '../../ui/AddToCartButton/AddToCartButton';
 
 export interface ProductDetailProps {
   product: Product;
@@ -56,9 +58,13 @@ function ProductDetail({ product }: ProductDetailProps) {
           {product.description}
         </Typography>
 
-        <button className="mt-2 w-full md:w-auto px-8 py-3 bg-[var(--color-primary)] text-white font-semibold rounded-[var(--radius-button)] hover:bg-[var(--color-primary-dark)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-2">
-          Agregar al carrito
-        </button>
+        <div className="flex items-center gap-3 mt-2">
+          <AddToCartButton product={product} />
+          <FavoriteButton
+            sku={product.sku}
+            className="h-11 w-11 border border-gray-200 hover:border-red-400 text-gray-400 hover:text-red-500"
+          />
+        </div>
       </div>
     </div>
   );

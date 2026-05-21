@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Product } from '../../../../domain/entities/Product';
 import { formatPrice } from '../../../../lib/utils';
+import { FavoriteButton } from '../../ui/FavoriteButton/FavoriteButton';
 
 export interface ProductCardProps {
   product: Product;
@@ -20,6 +21,10 @@ function ProductCard({ product }: ProductCardProps) {
           fill
           sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
           className="object-contain p-2 group-hover:scale-105 transition-transform duration-300"
+        />
+        <FavoriteButton
+          sku={product.sku}
+          className="absolute top-2 right-2 h-8 w-8 bg-white/80 hover:bg-white text-gray-400 hover:text-red-500"
         />
       </div>
 

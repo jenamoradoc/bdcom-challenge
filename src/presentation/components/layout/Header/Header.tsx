@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Container } from '../Container/Container';
 import { SearchBar } from '../../search/SearchBar/SearchBar';
+import { CartIcon } from '../../ui/CartIcon/CartIcon';
 
 export interface HeaderProps {
   initialSearchValue?: string;
@@ -23,6 +24,8 @@ function Header({ initialSearchValue = '' }: HeaderProps) {
           <div className="flex-1 min-w-0">
             <SearchBar initialValue={initialSearchValue} />
           </div>
+
+          <CartIcon />
         </div>
       </Container>
     </header>
