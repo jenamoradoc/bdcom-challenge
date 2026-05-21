@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { useFavoritesStore } from '../../../../store/useFavoritesStore';
 
 interface FavoriteButtonProps {
@@ -10,6 +11,9 @@ interface FavoriteButtonProps {
 function FavoriteButton({ sku, className = '' }: FavoriteButtonProps) {
   const toggle = useFavoritesStore((s) => s.toggle);
   const isFavorite = useFavoritesStore((s) => s.isFavorite(sku));
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -29,7 +33,7 @@ function FavoriteButton({ sku, className = '' }: FavoriteButtonProps) {
         viewBox="0 0 24 24"
         stroke="currentColor"
         strokeWidth={2}
-        fill={isFavorite ? 'currentColor' : 'none'}
+        fill={mounted && isFavorite ? 'currentColor' : 'none'}
         aria-hidden="true"
       >
         <path
