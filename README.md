@@ -330,11 +330,4 @@ src/
     └── utils.ts                  # formatPrice y helpers
 ```
 
----
 
-## Próximos pasos
-
-1. **Paginación** — la API de DummyJSON soporta `limit` y `skip`
-2. **Filtros y ordenamiento** — por categoría, rango de precio y rating
-3. **Tests de stores** — tests unitarios para los stores de Zustand
-4. **Auth real** — reemplazar el login hardcodeado por NextAuth.js
